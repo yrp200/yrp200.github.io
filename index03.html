@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <link rel="stylesheet" href="layout.css">
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI资源分享</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="layout.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            color: #2c3e50;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a365d;
+            font-size: 2.5em;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            gap: 20px;
+        }
+
+        .tab-button {
+            padding: 12px 30px;
+            font-size: 18px;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            color: #666;
+            font-weight: 500;
+        }
+
+        .tab-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .tab-button.active {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .resource-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .resource-card h3 i {
+            color: #4a90e2;
+        }
+
+        .resource-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .resource-card a {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card a:hover {
+            color: #2171cd;
+            gap: 10px;
+        }
+		.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.submit-btn {
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #72B4C3;
+}
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            background: #4a90e2;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .tool-icon i {
+            color: white;
+            font-size: 24px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+		.coming-soon {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+    margin-top: 40px;
+    border-top: 1px dashed #ccc;
+}
+
+.coming-soon i {
+    font-size: 24px;
+    color: #4a90e2;
+    margin-bottom: 15px;
+}
+
+.coming-soon h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.coming-soon p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+    </style>
+</head>
+<body>
+    <header class="nav-area">
+    <nav>
+        <div class="logo">个人AI知识库</div>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="index02.html">关于</a></li>
+            <li><a href="index03.html">资源</a></li>
+            <li><a href="index04.html">更多</a></li>
+        </ul>
+    </nav>
+</header>
+	<div class="container">
+        <h1 class="page-title">AI 资源中心</h1>
+        
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('articles')">
+                <i class="fas fa-book-open"></i> AI知识文章
+            </button>
+            <button class="tab-button" onclick="openTab('tools')">
+                <i class="fas fa-tools"></i> AI工具链接
+            </button>
+        </div>
+
+        <div id="articles" class="tab-content active">
+            <div class="resource-card">
+                <h3><i class="fas fa-graduation-cap"></i>智能的本质：人工智能与人类智能</h3>
+                <p>计算机为何能够表现出智能？计算机智能与人类智能有何异同与联系？当我们说到智能的时候，其内涵是指什么？人工智能是否可以模拟出人类智能？智能的本质到底又是什么？</p>
+                <a href="index0301.html" >阅读全文 <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="resource-card">
+                <h3><i class="fas fa-brain"></i>机器学习算法详解</h3>
+                <p>深入浅出地讲解常用机器学习算法的原理和应用场景，配有丰富的示例代码和实际案例分析。</p>
+                <a href="index0302.html">阅读全文 <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="resource-card">
+                <h3><i class="fas fa-magic"></i>提示词工程</h3>
+                <p>探索如何编写高效的提示词来更好地与AI模型交互，掌握提示词优化和设计的核心技巧。</p>
+                <a href="index0303.html">阅读全文 <i class="fas fa-arrow-right"></i></a>
+			</div>
+			<div class="resource-card">
+                <h3><i class="fas fa-users"></i>用户投稿专区</h3>
+                <p>欢迎分享您在AI领域的见解和经验！我们诚邀各位读者投稿，优质内容将在这里展示。</p>
+                <div class="action-buttons">
+                    <a href="submit-article.html" class="submit-btn"><i class="fas fa-pen-to-square"></i> 我要投稿</a>
+                    <a href="community-articles.html">查看投稿 <i class="fas fa-arrow-right"></i></a>
+                </div>
+				</div>
+			<div class="coming-soon">
+				<i class="fas fa-hourglass-half"></i>
+				<h3>更多文章，敬请期待</h3>
+				<p>我们正在准备更多精彩的人工智能相关内容，请持续关注本站更新。</p>
+			</div>
+            </div>
+        </div>
+
+<div id="tools" class="tab-content">
+    <div class="tools-container">
+        <!-- 文本类 -->
+        <div class="tool-category">
+            <div class="category-header">
+                <i class="fas fa-comment-dots"></i>
+                <h2>文本生成</h2>
+            </div>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>ChatGPT</h3>
+                    <p>OpenAI开发的大型语言模型，可用于对话和文本生成。支持多种语言，能够理解上下文。</p>
+                    <a href="https://chat.openai.com" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Claude</h3>
+                    <p>Anthropic开发的AI助手，擅长学术写作和深度分析，支持更长的上下文。</p>
+                    <a href="https://claude.ai" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+				<div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <h3>Kimi</h3>
+                    <p>由Moonshot AI开发的人工智能助手,擅长中英文对话,具备阅读和理解多种文件格式的能力。</p>
+                    <a href="https://kimi.moonshot.cn/chat/ctanl6ab2bi6e9u6eka0" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+				<div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>SenseChat（商量）</h3>
+                    <p>商汤科技旗下的语言大模型应用平台，拥有多模态文件处理能力和超长文本理解、思考、生成能力。</p>
+                    <a href="https://kimi.moonshot.cn/chat/ctanl6ab2bi6e9u6eka0" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 绘图类 -->
+        <div class="tool-category">
+            <div class="category-header">
+                <i class="fas fa-palette"></i>
+                <h2>AI绘画</h2>
+            </div>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Midjourney</h3>
+                    <p>AI图像生成工具，可根据文本描述创建高质量图片。适用于艺术创作和设计领域。</p>
+                    <a href="https://www.midjourney.com" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3>Stable Diffusion</h3>
+                    <p>开源的AI绘画模型，支持本地部署，可进行深度定制和个性化训练。</p>
+                    <a href="https://stability.ai" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+				<div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>SenseMirage（秒画）</h3>
+                    <p>商汤科技旗下的文生图模型。自研模型+开源模型+自定义LoRA安放无尽想象力。</p>
+                    <a href="https://miaohua.sensetime.com/?from=allisai.com" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+				<div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>即梦AI</h3>
+                    <p>剪映旗下产品，支持通过自然语言及图片输入，生成高质量的图像及<b>视频</b>。</p>
+                    <a href="https://jimeng.jianying.com" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+       <!-- 视频类 -->
+        <div class="tool-category">
+            <div class="category-header">
+                <i class="fas fa-video"></i>
+                <h2>AI视频</h2>
+            </div>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Runway</h3>
+                    <p>专业的AI视频创作平台，支持视频编辑、特效制作、文本生成视频等功能。</p>
+                    <a href="https://runway.ml" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Pika Labs</h3>
+                    <p>新兴的AI视频生成工具，可通过文本描述生成短视频，支持多种风格转换。</p>
+                    <a href="https://pika.art" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <h3>Synthesia</h3>
+                    <p>AI数字人视频生成平台，可快速制作专业的数字人讲解视频，支持多语言。</p>
+                    <a href="https://www.synthesia.io" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Gen-2</h3>
+                    <p>Runway推出的第二代AI视频生成模型，支持文本生成视频、图片转视频、视频风格迁移等高级功能。</p>
+                    <a href="https://research.runwayml.com/gen2" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+				<div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <h3>Sora</h3>
+                    <p>OpenAI推出的文本到视频模型。它能根据用户输入的描述性提示快速生成视频，还可对现有视频进行编辑和扩展。</p>
+                    <a href="https://sora.com/" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 代码生成类 -->
+        <div class="tool-category">
+            <div class="category-header">
+                <i class="fas fa-code"></i>
+                <h2>AI编程</h2>
+            </div>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-hat-wizard"></i>
+                    </div>
+                    <h3>GitHub Copilot</h3>
+                    <p>微软与GitHub合作开发的AI编程助手，可实时提供代码建议和自动补全功能。</p>
+                    <a href="https://github.com/features/copilot" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>Amazon CodeWhisperer</h3>
+                    <p>亚马逊推出的AI代码生成工具，支持多种编程语言，提供实时代码建议。</p>
+                    <a href="https://aws.amazon.com/codewhisperer" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Cursor</h3>
+                    <p>基于AI的代码编辑器，集成了强大的代码生成和编辑功能，支持自然语言交互。</p>
+                    <a href="https://cursor.sh" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>Tabnine</h3>
+                    <p>AI驱动的代码补全工具，支持所有主流IDE，提供精准的代码建议。</p>
+                    <a href="https://www.tabnine.com" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+		        <!-- 新闻传播垂类AI -->
+        <div class="tool-category">
+            <div class="category-header">
+                <i class="fas fa-newspaper"></i>
+                <h2>新闻传播领域垂类AI</h2>
+            </div>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>新华妙笔</h3>
+                    <p>AI公文写作学习平台，由新华社媒体融合生产技术与系统国家重点实验室与博特智能公司联合研发。 </p>
+                    <a href="https://miaobi.xinhuaskl.com/" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3>人民日报创作大脑AI+</h3>
+                    <p>集纳大模型、自然语言处理、计算机视觉、音频语义理解、图像识别等多项先进的人工智能技术，实现内容智能化生产及协作。</p>
+                    <a href="https://ai.pdnews.cn/home" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h3>央视听媒体大模型</h3>
+                    <p>首个专注于视听媒体内容生产的AI大模型，基于上海AI实验室的书生通用大模型体系，集合了中央广播电视总台的海量视听数据。</p>
+                    <a href="https://cmg.openxlab.org.cn/" target="_blank" class="visit-btn">
+                        访问网站 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+		
+    <script>
+        function openTab(tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            const tabButtons = document.getElementsByClassName('tab-button');
+            
+            Array.from(tabContents).forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            Array.from(tabButtons).forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>更多</title>
+	<script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="layout.css">
+<style>
+.faq-section {
+    margin: 40px auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.faq-list details {
+    margin: 10px 20px;
+    padding: 15px 25px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.faq-list summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.learning-steps {
+    padding: 30px;
+    line-height: 2;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    margin: 20px 0;
+}
+
+.learning-steps ol {
+    padding-left: 30px;
+    counter-reset: item;
+}
+
+.learning-steps ol > li {
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    background: #f5f7fa;
+    border-radius: 8px;
+}
+
+.learning-steps ul {
+    padding-left: 25px;
+    margin: 15px 0;
+}
+
+.learning-steps ul li {
+    margin: 10px 0;
+    color: #444;
+    list-style-type: none;
+    position: relative;
+    padding: 5px 0;
+}
+
+.learning-steps ul li:before {
+    content: "→";
+    color: #2196F3;
+    font-weight: bold;
+    position: absolute;
+    left: -20px;
+}
+
+.learning-steps ol > li:nth-child(1) {
+    border-left: 5px solid #90CAF9;  
+    background: #F8FBFE;
+}
+.learning-steps ol > li:nth-child(2) {
+    border-left: 5px solid #64B5F6; 
+    background: #F5F9FD;
+}
+.learning-steps ol > li:nth-child(3) {
+    border-left: 5px solid #42A5F5;  
+    background: #F1F7FC;
+}
+.learning-steps ol > li:nth-child(4) {
+    border-left: 5px solid #2196F3; 
+    background: #EEF6FB;
+}
+
+.learning-steps li {
+    padding-left: 15px;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+
+.learning-steps li:hover {
+    transform: translateX(8px);
+    background-color: rgba(33, 150, 243, 0.1);
+}
+
+.learning-steps ul li {
+    font-size: 0.95em;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.learning-steps ul li:hover {
+    background-color: #f0f7ff;
+    padding-left: 10px;
+}
+</style>
+</head>
+
+<body>
+	<header class="nav-area">
+    <nav>
+        <div class="logo">个人AI知识库</div>
+        <ul class="nav-links">
+            <li><a href="index.html" target="content">首页</a></li>
+            <li><a href="index02.html">关于</a></li>
+            <li><a href="index03.html">资源</a></li>
+            <li><a href="index04.html">更多</a></li>
+        </ul>
+    </nav>
+</header>
+	<section id="contact" class="more-section">
+    <div class="container">
+
+        <div class="faq-section">
+            <h2>常见问题</h2>
+            <div class="faq-list">
+                <details>
+                    <summary>如何开始学习AI？</summary>
+                    <div class="learning-steps">
+                        <ol>
+                            <li>先学基础数学知识：
+                                <ul>
+                                    <li>线性代数</li>
+                                    <li>概率论</li>
+                                    <li>微积分</li>
+                                </ul>
+                            </li>
+                            <li>掌握编程语言Python</li>
+                            <li>了解AI基本概念：
+                                <ul>
+                                    <li>机器学习</li>
+                                    <li>深度学习</li>
+                                    <li>强化学习</li>
+                                </ul>
+                            </li>
+                            <li>尝试简单实践项目：
+                                <ul>
+                                    <li>鸢尾花分类</li>
+                                    <li>手写数字识别</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </details>
+                <details>
+                    <summary>AI网站资源是免费的吗？</summary>
+                    <div class="learning-steps">
+                        <p>大部分基础资源都是免费的，部分网站的高级内容可能需要付费访问。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <!-- 原有的建设中内容可以保留 -->
+        <div class="coming-soon-content">
+            <div class="message">
+                <h3>网站持续建设中</h3>
+                <p>我们正在不断完善网站内容，未来将为您带来：</p>
+                
+                <ul class="future-features">
+                    <li>更多精彩的项目展示</li>
+                    <li>详细的技术文档</li>
+                    <li>互动社</li>
+                    <li>资源下载</li>
+                </ul>
+                
+                <div class="stay-tuned">
+                    <p>敬请期待！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+	<footer style="background-color: #333; color: white; padding: 10px 0; margin-top: 10px;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-around;">
+        <!-- 联系方式 -->
+        <div class="footer-section">
+            <h3>联系方式</h3>
+            <p>电话：123-4567-8900</p>
+            <p>邮箱：D2556767843@2925.com</p>
+        </div>
+
+        <!-- 地址信息 -->
+        <div class="footer-section">
+            <h3>地址</h3>
+            <p>陕西省西安市</p>
+            <p>邮编：710000</p>
+        </div>
+    </div>
+
+    <!-- 版权信息 -->
+    <div style="text-align: center; margin-top: 10px; padding-top: 0px; border-top: 1px solid #555;">
+        <p>© 2024 yrp. 版权所有</p>
+    </div>
+</footer>
+</body>
+</html>
