@@ -541,3 +541,61 @@ p {
         font-size: clamp(0.8rem, 0.8vw + 0.5rem, 1rem);
     }
 }
+.article-section {
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #4a90e2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title i {
+    color: #4a90e2;
+}
+
+.submission-card {
+    background: linear-gradient(135deg, #f6f9fc 0%, #f1f4f8 100%);
+    border: 1px dashed #4a90e2;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.submit-btn {
+    background-color: white;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.submit-btn:hover {
+    background-color: #357abd;
+}
+
+.view-btn {
+    color: #4a90e2;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+}
+
+.view-btn:hover {
+    color: #357abd;
+}
